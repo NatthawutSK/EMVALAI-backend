@@ -1,4 +1,4 @@
-package com.emvalai.authservice.entities;
+package com.emvalai.userservice.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class User {
+public class UserRestModel {
+
     private String _id;
     private String fName;
     private String lName;
@@ -17,9 +18,9 @@ public class User {
     private String phone;
     private String dob;
     private String gender;
-    private String password;
     private String role;
     private String position;
     private String image;
     private String hireDate;
+//    private String status;
 }

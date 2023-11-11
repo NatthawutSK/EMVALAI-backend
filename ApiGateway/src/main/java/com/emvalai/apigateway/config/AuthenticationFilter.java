@@ -43,6 +43,7 @@ public class AuthenticationFilter implements GlobalFilter {
             if (jwtUtil.isInvalid(token)){
                 return this.onError(exchange, "Authorization header is invalid", HttpStatus.UNAUTHORIZED);
             }
+            this.populateRequestWithHeaders(exchange, token);
         }
         return chain.filter(exchange);
     }
@@ -64,10 +65,20 @@ public class AuthenticationFilter implements GlobalFilter {
 
     private void populateRequestWithHeaders(ServerWebExchange exchange, String token){
         Claims claims = jwtUtil.getAllClaimsFromToken(token);
+        System.out.println(claims.toString());
         exchange.getRequest()
                 .mutate()
                 .header("userId", String.valueOf(claims.get("userId")))
                 .header("role", String.valueOf(claims.get("role")))
+                .header("fName", String.valueOf(claims.get("fName")))
+                .header("lName", String.valueOf(claims.get("lName")))
+                .header("image", String.valueOf(claims.get("image")))
+                .header("hireDate", String.valueOf(claims.get("hireDate")))
+                .header("gender", String.valueOf(claims.get("gender")))
+                .header("phone", String.valueOf(claims.get("phone")))
+                .header("dob", String.valueOf(claims.get("dob")))
+                .header("position", String.valueOf(claims.get("position")))
+                .header("email", String.valueOf(claims.get("email")))
                 .build();
     }
 }

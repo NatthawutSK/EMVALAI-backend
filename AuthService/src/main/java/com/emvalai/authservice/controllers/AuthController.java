@@ -22,7 +22,20 @@ public class AuthController {
 
     @PostMapping
     public ResponseEntity<AuthResponse> logIn(@RequestBody AuthRequest authRequest){
-        return ResponseEntity.ok(authService.logIn(authRequest));
+        String status;
+        AuthResponse response = new AuthResponse("", "", "");
+        try{
+            response = authService.logIn(authRequest);
+            status = response.getStatus();
+        }catch (Exception ex){
+            status = ex.getLocalizedMessage();
+        }
+        AuthResponse authResponse = AuthResponse.builder()
+                .accessToken(response.getAccessToken())
+                .refreshToken(response.getRefreshToken())
+                .status(status)
+                .build();
+        return ResponseEntity.ok(authResponse);
     }
 
 }

@@ -44,14 +44,22 @@ public class JwtUtil {
 
     public String generate(User user, String type){
         Map<String, Object> claims = new HashMap<>();
-        claims.put("userId", user.getUserId());
+        claims.put("userId", user.get_id());
         claims.put("role", user.getRole());
         claims.put("email", user.getEmail());
+        claims.put("fName", user.getFName());
+        claims.put("lName", user.getLName());
+        claims.put("gender", user.getGender());
+        claims.put("dob", user.getDob());
+        claims.put("phone", user.getPhone());
+        claims.put("image", user.getImage());
+        claims.put("position", user.getPosition());
+        claims.put("hireDate", user.getHireDate());
         return doGenerateToken(claims, user.getEmail(), type);
 
     }
 
-    public String doGenerateToken(Map<String, Object> claims, String usernmae, String type){
+    public String doGenerateToken(Map<String, Object> claims, String email, String type){
         long expirationTimeLong;
         if ("ACCESS".equals(type)){
             expirationTimeLong = Long.parseLong(expirationTime) * 1000;
@@ -62,7 +70,7 @@ public class JwtUtil {
         final Date expirationDate = new Date(createdDate.getTime() + expirationTimeLong);
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(usernmae)
+                .setSubject(email)
                 .setIssuedAt(createdDate)
                 .setExpiration(expirationDate)
                 .signWith(key)

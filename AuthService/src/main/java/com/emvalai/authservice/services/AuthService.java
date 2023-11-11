@@ -3,6 +3,7 @@ package com.emvalai.authservice.services;
 import com.emvalai.authservice.entities.AuthRequest;
 import com.emvalai.authservice.entities.AuthResponse;
 import com.emvalai.authservice.entities.User;
+import com.emvalai.authservice.entities.UserRestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -25,7 +26,7 @@ public class AuthService {
 //            return new AuthResponse("", "", "Login Fail");
         }
 
-        User user = User.builder()
+        UserRestModel user = UserRestModel.builder()
                 ._id(userDb.get_id())
                 .email(userDb.getEmail())
                 .role(userDb.getRole())
@@ -38,10 +39,12 @@ public class AuthService {
                 .hireDate(userDb.getHireDate())
                 .position(userDb.getPosition())
                 .build();
+        System.out.println(user.toString());
         String accessToken = jwt.generate(user, "ACCESS");
         String refreshToken =  jwt.generate(user, "REFRESH");
 
-        return new AuthResponse(accessToken, refreshToken, "Login Success");
+
+        return new AuthResponse(accessToken, refreshToken, "Login Success", user);
     }
 
 }

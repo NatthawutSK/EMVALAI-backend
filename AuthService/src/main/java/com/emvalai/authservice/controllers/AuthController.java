@@ -23,7 +23,7 @@ public class AuthController {
     @PostMapping
     public ResponseEntity<AuthResponse> logIn(@RequestBody AuthRequest authRequest){
         String status;
-        AuthResponse response = new AuthResponse("", "", "");
+        AuthResponse response = new AuthResponse("", "", "",null);
         try{
             response = authService.logIn(authRequest);
             status = response.getStatus();
@@ -34,6 +34,7 @@ public class AuthController {
                 .accessToken(response.getAccessToken())
                 .refreshToken(response.getRefreshToken())
                 .status(status)
+                .user(response.getUser())
                 .build();
         return ResponseEntity.ok(authResponse);
     }

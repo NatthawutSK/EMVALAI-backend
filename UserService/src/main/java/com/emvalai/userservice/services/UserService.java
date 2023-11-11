@@ -35,4 +35,9 @@ public class UserService {
         return updatedUser;
     }
 
+
+    public UserEntity getUserById(String userId){
+        return userRepository.findByUserId(userId);
+    }
+
 }

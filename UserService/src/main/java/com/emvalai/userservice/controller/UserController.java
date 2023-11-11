@@ -34,7 +34,7 @@ public class UserController {
     }
 
     @GetMapping("/login/{email}")
-    public UserEntity checkLogin(@PathVariable String email){
+    public UserEntity checkLogin(@PathVariable("email") String email){
         return userService.findByEmail(email);
     }
 
@@ -50,6 +50,15 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }
         return ResponseEntity.ok(userEntity);
+    }
+
+    @GetMapping("/getUserbyId/{userId}")
+    public ResponseEntity<?> getUserById(@PathVariable("userId") String userId){
+        System.out.println("userId "+ userId);
+        UserEntity userEntity = userService.getUserById(userId);
+        UserRestModel userRestModel = new  UserRestModel();
+        BeanUtils.copyProperties(userEntity, userRestModel);
+        return ResponseEntity.ok(userRestModel);
     }
 
 

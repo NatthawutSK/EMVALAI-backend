@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/AuthService/pom.xml" />
         <option value="$PROJECT_DIR$/MeetingService/pom.xml" />
         <option value="$PROJECT_DIR$/TaskService/pom.xml" />
+        <option value="$PROJECT_DIR$/CalendarService/pom.xml" />
       </list>
     </option>
   </component>

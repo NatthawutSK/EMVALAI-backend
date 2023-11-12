@@ -13,6 +13,7 @@
         <module name="ApiGateway" />
         <module name="TaskService" />
         <module name="AuthService" />
+        <module name="CalendarService" />
       </profile>
     </annotationProcessing>
   </component>
@@ -20,6 +21,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ApiGateway" options="-parameters" />
       <module name="AuthService" options="-parameters" />
+      <module name="CalendarService" options="-parameters" />
       <module name="DiscoveryServer" options="-parameters" />
       <module name="MeetingService" options="-parameters" />
       <module name="TaskService" options="-parameters" />

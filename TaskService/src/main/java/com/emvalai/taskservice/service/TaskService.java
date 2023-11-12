@@ -24,5 +24,11 @@ public class TaskService {
         return taskRepository.saveAll(taskEntityList);
     }
 
+    public Boolean DelTask(String taskId){
+        taskRepository.deleteById(taskId);
+        return true;
+
+    }
+
 
 }

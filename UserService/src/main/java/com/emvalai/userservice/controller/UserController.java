@@ -34,6 +34,11 @@ public class UserController {
         return usersRest;
     }
 
+    @GetMapping("/getAllUser")
+    public List<UserEntity> getAllUser(){
+        return userService.getAllUser();
+    }
+
     @GetMapping("/login/{email}")
     public UserEntity checkLogin(@PathVariable("email") String email){
         return userService.findByEmail(email);
@@ -67,6 +72,11 @@ public class UserController {
         return ResponseEntity.ok(userRestModel);
     }
 
+
+//    @GetMapping("/getUserByProj")
+//    public ResponseEntity<?> getUserName(){
+//
+//    }
 
 
 }

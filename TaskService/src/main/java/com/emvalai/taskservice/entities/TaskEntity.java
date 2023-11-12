@@ -19,6 +19,7 @@ public class TaskEntity {
     private String projectId;
     private TaskStatus taskStatus;
     private String userId;
+    private String userName;
     private String dueDate;
     private String createdDate;
 

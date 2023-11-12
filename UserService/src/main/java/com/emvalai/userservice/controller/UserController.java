@@ -1,5 +1,6 @@
 package com.emvalai.userservice.controller;
 
+import com.emvalai.userservice.entities.ResponseRegister;
 import com.emvalai.userservice.entities.UserEntity;
 import com.emvalai.userservice.entities.UserRestModel;
 import com.emvalai.userservice.services.UserService;
@@ -39,8 +40,13 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public UserEntity addUser(@RequestBody UserEntity user){
-        return userService.addUser(user);
+    public ResponseRegister addUser(@RequestBody UserEntity user){
+        if (userService.addUser(user)){
+            return new ResponseRegister(true,"Register Success");
+        } else {
+            return new ResponseRegister(false,"Email Already use");
+        }
+
     }
 
     @PostMapping("/edit")

@@ -18,8 +18,15 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public UserEntity addUser(UserEntity user){
-        return userRepository.save(user);
+    public Boolean addUser(UserEntity user){
+        UserEntity userEntity = userRepository.findByEmail(user.getEmail());
+        if (userEntity != null){
+            return false;
+        } else {
+            userRepository.save(user);
+            return true;
+        }
+
     }
 
     public UserEntity findByEmail(String email){

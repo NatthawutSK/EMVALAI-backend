@@ -1,6 +1,7 @@
 package com.emvalai.authservice.services;
 
 import com.emvalai.authservice.entities.User;
+import com.emvalai.authservice.entities.UserRestModel;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -42,7 +43,7 @@ public class JwtUtil {
         return expiration.before(new Date());
     }
 
-    public String generate(User user, String type){
+    public String generate(UserRestModel user, String type){
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", user.get_id());
         claims.put("role", user.getRole());

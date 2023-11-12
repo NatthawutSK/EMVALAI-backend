@@ -21,4 +21,6 @@ public class UserRestModel {
     private String position;
     private String image;
     private String hireDate;
+
 }
+

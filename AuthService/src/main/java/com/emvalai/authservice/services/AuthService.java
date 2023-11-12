@@ -43,7 +43,6 @@ public class AuthService {
         String accessToken = jwt.generate(user, "ACCESS");
         String refreshToken =  jwt.generate(user, "REFRESH");
 
-
         return new AuthResponse(accessToken, refreshToken, "Login Success", user);
     }
 

@@ -1,5 +1,6 @@
 package com.emvalai.userservice.controller;
 
+import com.emvalai.emcore.event.UserOnlyId;
 import com.emvalai.userservice.entities.ResponseRegister;
 import com.emvalai.userservice.entities.UserEntity;
 import com.emvalai.userservice.entities.UserRestModel;
@@ -73,10 +74,19 @@ public class UserController {
     }
 
 
-//    @GetMapping("/getUserByProj")
-//    public ResponseEntity<?> getUserName(){
-//
-//    }
+    @GetMapping("/getUserByRole/{role}")
+    public ResponseEntity<?> getUserByRole(@PathVariable("role") String role){
+        List<UserEntity> userEntity =userService.getUserByRole(role);
+        List<UserOnlyId> userOnlyIds = new ArrayList<>();
+        for (UserEntity user : userEntity){
+            UserOnlyId userOnlyId = UserOnlyId.builder()
+                    .userId(user.get_id())
+                    .build();
+            userOnlyIds.add(userOnlyId);
+        }
+        return ResponseEntity.ok(userOnlyIds);
+
+    }
 
 
 }

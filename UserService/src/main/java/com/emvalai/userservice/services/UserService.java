@@ -47,4 +47,9 @@ public class UserService {
         return userRepository.findByUserId(userId);
     }
 
+
+    public List<UserEntity> getUserByRole(String role){
+        return userRepository.findByRole(role);
+
+    }
 }

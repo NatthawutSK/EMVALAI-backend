@@ -1,6 +1,7 @@
 package com.emvalai.meetingservice.command;
 
 import com.emvalai.meetingservice.core.event.MeetingCreatedEvent;
+import com.emvalai.emcore.event.MeetingCreateEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -26,18 +27,18 @@ public class MeetingAggregate {
 
     @CommandHandler
     public MeetingAggregate(CreateMeetingCommand createMeetingCommand){
-        MeetingCreatedEvent meetingCreatedEvent = new MeetingCreatedEvent();
+        MeetingCreateEvent meetingCreatedEvent = new MeetingCreateEvent();
         BeanUtils.copyProperties(createMeetingCommand,meetingCreatedEvent);
         AggregateLifecycle.apply(meetingCreatedEvent);
     }
 
     @EventSourcingHandler
-    public void on(MeetingCreatedEvent meetingCreatedEvent){
-        this.meet_id = meetingCreatedEvent.getMeet_id();
-        this.meet_date = meetingCreatedEvent.getMeet_date();
-        this.role = meetingCreatedEvent.getRole();
-        this.meet_title = meetingCreatedEvent.getMeet_title();
-        this.meet_description = meetingCreatedEvent.getMeet_description();
-        this.created_by = meetingCreatedEvent.getCreated_by();
+    public void on(MeetingCreateEvent meetingCreateEvent){
+        this.meet_id = meetingCreateEvent.getMeet_id();
+        this.meet_date = meetingCreateEvent.getMeet_date();
+        this.role = meetingCreateEvent.getRole();
+        this.meet_title = meetingCreateEvent.getMeet_title();
+        this.meet_description = meetingCreateEvent.getMeet_description();
+        this.created_by = meetingCreateEvent.getCreated_by();
     }
 }

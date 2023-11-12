@@ -1,5 +1,6 @@
 package com.emvalai.meetingservice;
 
+import com.emvalai.emcore.event.MeetingCreateEvent;
 import com.emvalai.meetingservice.core.data.MeetingEntity;
 import com.emvalai.meetingservice.core.data.MeetingRepository;
 import com.emvalai.meetingservice.core.event.MeetingCreatedEvent;
@@ -17,7 +18,7 @@ public class MeetingEventHandler {
     }
 
     @EventHandler
-    public void on(MeetingCreatedEvent event){
+    public void on(MeetingCreateEvent event){
         MeetingEntity meetingEntity = new MeetingEntity();
         BeanUtils.copyProperties(event, meetingEntity);
         meetingRepository.save(meetingEntity);

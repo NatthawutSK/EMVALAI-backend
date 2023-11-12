@@ -13,4 +13,6 @@ public interface CalendarRepository extends MongoRepository<CalendarEntity, Stri
     @Query(value="{userId:'?0'}")
     public List<CalendarEntity> findByUserId(String userId);
 
+//    @Query(value="{userId:'?0'}")
+//    public List<CalendarEntity> findUserByRole(String userId);
 }

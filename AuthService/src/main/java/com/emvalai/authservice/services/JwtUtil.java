@@ -67,7 +67,7 @@ public class JwtUtil {
         } else {
             expirationTimeLong = Long.parseLong(expirationTime) * 1000 * 5;
         }
-        final  Date createdDate = new Date();
+        final Date createdDate = new Date();
         final Date expirationDate = new Date(createdDate.getTime() + expirationTimeLong);
         return Jwts.builder()
                 .setClaims(claims)

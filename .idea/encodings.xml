@@ -8,6 +8,8 @@
     <file url="file://$PROJECT_DIR$/DiscoveryServer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DiscoveryServer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/MeetingService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TaskService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TaskService/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/UserService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/UserService/src/main/resources" charset="UTF-8" />
   </component>

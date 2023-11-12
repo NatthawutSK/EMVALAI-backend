@@ -39,6 +39,7 @@ public class AuthService {
                 .hireDate(userDb.getHireDate())
                 .position(userDb.getPosition())
                 .build();
+        System.out.println(user.toString());
         String accessToken = jwt.generate(user, "ACCESS");
         String refreshToken =  jwt.generate(user, "REFRESH");
 

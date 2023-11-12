@@ -10,6 +10,7 @@
         <module name="DiscoveryServer" />
         <module name="UserService" />
         <module name="ApiGateway" />
+        <module name="TaskService" />
         <module name="AuthService" />
       </profile>
     </annotationProcessing>
@@ -19,6 +20,7 @@
       <module name="ApiGateway" options="-parameters" />
       <module name="AuthService" options="-parameters" />
       <module name="DiscoveryServer" options="-parameters" />
+      <module name="TaskService" options="-parameters" />
       <module name="UserService" options="-parameters" />
     </option>
   </component>

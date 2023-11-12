@@ -1,5 +1,6 @@
 package com.emvalai.userservice.controller;
 
+import com.emvalai.userservice.entities.ResponseRegister;
 import com.emvalai.userservice.entities.UserEntity;
 import com.emvalai.userservice.entities.UserRestModel;
 import com.emvalai.userservice.services.UserService;
@@ -34,13 +35,18 @@ public class UserController {
     }
 
     @GetMapping("/login/{email}")
-    public UserEntity checkLogin(@PathVariable String email){
+    public UserEntity checkLogin(@PathVariable("email") String email){
         return userService.findByEmail(email);
     }
 
     @PostMapping("/register")
-    public UserEntity addUser(@RequestBody UserEntity user){
-        return userService.addUser(user);
+    public ResponseRegister addUser(@RequestBody UserEntity user){
+        if (userService.addUser(user)){
+            return new ResponseRegister(true,"Register Success");
+        } else {
+            return new ResponseRegister(false,"Email Already use");
+        }
+
     }
 
     @PostMapping("/edit")
@@ -50,6 +56,15 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }
         return ResponseEntity.ok(userEntity);
+    }
+
+    @GetMapping("/getUserbyId/{userId}")
+    public ResponseEntity<?> getUserById(@PathVariable("userId") String userId){
+        System.out.println("userId "+ userId);
+        UserEntity userEntity = userService.getUserById(userId);
+        UserRestModel userRestModel = new  UserRestModel();
+        BeanUtils.copyProperties(userEntity, userRestModel);
+        return ResponseEntity.ok(userRestModel);
     }
 
 

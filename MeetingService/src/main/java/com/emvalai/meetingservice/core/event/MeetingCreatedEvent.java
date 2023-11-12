@@ -1,14 +1,13 @@
-package com.emvalai.meetingservice.controller;
+package com.emvalai.meetingservice.core.event;
 
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 @Data
-public class MeetingRestModel {
+public class MeetingCreatedEvent {
+    private String meet_id;
     private String meet_title;
     private String meet_description;
     private LocalDateTime meet_date;

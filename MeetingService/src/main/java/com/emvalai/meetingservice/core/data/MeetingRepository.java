@@ -1,5 +1,6 @@
-package com.emvalai.meetingservice.repository;
+package com.emvalai.meetingservice.core.data;
 
+import com.emvalai.meetingservice.core.data.MeetingEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;

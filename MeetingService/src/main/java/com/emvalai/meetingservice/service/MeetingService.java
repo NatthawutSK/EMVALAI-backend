@@ -1,7 +1,7 @@
 package com.emvalai.meetingservice.service;
 
-import com.emvalai.meetingservice.repository.MeetingEntity;
-import com.emvalai.meetingservice.repository.MeetingRepository;
+import com.emvalai.meetingservice.core.data.MeetingEntity;
+import com.emvalai.meetingservice.core.data.MeetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +23,9 @@ public class MeetingService {
         repository.save(meeting);
     }
 
-    public List<MeetingEntity> getMeetingByRole(String role){
-        return repository.findByRole(role);
-    }
+//    public List<MeetingEntity> getMeetingByRole(String role){
+//        return repository.findByRole(role);
+//    }
 
 
 }

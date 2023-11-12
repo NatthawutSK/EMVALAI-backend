@@ -38,4 +38,10 @@ public class TaskController {
         List<TaskEntity> taskEntityList = taskService.UpdateTask(taskUpdateRestModel.getTaskEntityList());
         return ResponseEntity.ok(taskEntityList);
     }
+
+    @GetMapping("delTask/{taskId}")
+    public ResponseEntity<?> deleteTask(@PathVariable("taskId") String taskId){
+        return ResponseEntity.ok(taskService.DelTask(taskId));
+
+    }
 }

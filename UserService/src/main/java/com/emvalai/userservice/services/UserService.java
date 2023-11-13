@@ -1,5 +1,6 @@
 package com.emvalai.userservice.services;
 
+import com.emvalai.userservice.entities.EditImageEntity;
 import com.emvalai.userservice.entities.UserEntity;
 import com.emvalai.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,31 @@ public class UserService {
 
     public List<UserEntity> getUserByRole(String role){
         return userRepository.findByRole(role);
+    }
+
+
+    public Boolean EditImageUser(EditImageEntity editImageEntity){
+        UserEntity user = userRepository.findByUserId(editImageEntity.get_id());
+        if (user == null){
+            return false;
+        } else {
+            UserEntity userEntity = UserEntity.builder()
+                    ._id(user.get_id())
+                    .fName(user.getFName())
+                    .lName(user.getLName())
+                    .dob(user.getDob())
+                    .phone(user.getPhone())
+                    .gender(user.getGender())
+                    .email(user.getEmail())
+                    .hireDate(user.getHireDate())
+                    .password(user.getPassword())
+                    .position(user.getPosition())
+                    .image(editImageEntity.getImage())
+                    .role(user.getRole())
+                    .build();
+            return true;
+        }
+
 
     }
 }

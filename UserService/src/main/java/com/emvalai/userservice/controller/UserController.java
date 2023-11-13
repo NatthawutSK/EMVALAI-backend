@@ -1,6 +1,7 @@
 package com.emvalai.userservice.controller;
 
 import com.emvalai.emcore.event.UserOnlyId;
+import com.emvalai.userservice.entities.EditImageEntity;
 import com.emvalai.userservice.entities.ResponseRegister;
 import com.emvalai.userservice.entities.UserEntity;
 import com.emvalai.userservice.entities.UserRestModel;
@@ -85,7 +86,11 @@ public class UserController {
             userOnlyIds.add(userOnlyId);
         }
         return ResponseEntity.ok(userOnlyIds);
+    }
 
+    @PostMapping("/editImage")
+    public ResponseEntity<?> editImageUser(@RequestBody EditImageEntity imageEntity){
+        return ResponseEntity.ok(userService.EditImageUser(imageEntity));
     }
 
 

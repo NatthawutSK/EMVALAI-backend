@@ -19,7 +19,7 @@ public class LeaveInfoModel {
     private String start_date;
     private String end_date;
     private int num_date;
-    private boolean leave_status;
+    private String leave_status;
     private String evidence_img;
     private String note;
 }

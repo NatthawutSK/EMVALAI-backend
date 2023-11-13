@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MyRepository extends MongoRepository<LeaveInfoModel, String> {
     @Query(value="{leave_id:'?0'}")
-    public LeaveInfoModel findByLeaveId(int leave_id);
+    public LeaveInfoModel findByLeaveId(String leave_id);
 }

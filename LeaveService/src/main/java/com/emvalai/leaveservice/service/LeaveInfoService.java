@@ -29,7 +29,7 @@ public class LeaveInfoService {
         return leaveRepository.findAll();
     }
 
-    public boolean setApproveInfo(int leave_id,boolean setter){
+    public boolean setApproveInfo(String leave_id, String setter){
         LeaveInfoModel leaveInfoModel = leaveRepository.findByLeaveId(leave_id);
         if (leaveInfoModel != null){
             leaveInfoModel.setLeave_status(setter);
@@ -38,6 +38,11 @@ public class LeaveInfoService {
         }else{
             return false;
         }
+    }
+
+    public LeaveInfoModel getByID(String leave_id){
+        LeaveInfoModel leaveInfoModel = leaveRepository.findByLeaveId(leave_id);
+        return leaveInfoModel;
     }
 
 }

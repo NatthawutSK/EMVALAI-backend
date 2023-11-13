@@ -22,7 +22,7 @@ public class Controller{
     private UserService userService;
     @Autowired
     private RabbitTemplate rabbitTemplate;
-//
+
 //    @Autowired
 //    LeaveInfoRepository leaveInfoRepository;
 
@@ -46,7 +46,7 @@ public class Controller{
                     info.setLeave_type(leaveModel.getLeave_type());
                     info.setEnd_date(leaveModel.getEnd_date());
                     info.setStart_date(leaveModel.getStart_date());
-                    info.setLeave_status(leaveModel.isLeave_status());
+                    info.setLeave_status(leaveModel.getLeave_status());
                     info.setFirstName(user.getFName());
                     info.setLastName(user.getLName());
                     info.setRole(user.getRole());
@@ -65,13 +65,18 @@ public class Controller{
 
     @PostMapping("/create")
     public boolean create(@RequestBody LeaveInfoModel model){
-        model.setLeave_status(false);
+        model.setLeave_status("Waiting"); // Approve, Reject
         return leaveInfoService.createLeaveInfo(model);
     }
 
     @PutMapping("/approve/{leave_id}/{status}")
-    public boolean setApprove(@PathVariable("leave_id") int leave_id, @PathVariable("status") boolean status){
+    public boolean setApprove(@PathVariable("leave_id") String leave_id, @PathVariable("status") String status){
         return leaveInfoService.setApproveInfo(leave_id, status);
+    }
+
+    @GetMapping("/getLeave/{leaveID}")
+    public LeaveInfoModel getLeaveById(@PathVariable("leaveID") String leave_id){
+        return leaveInfoService.getByID(leave_id);
     }
 
 }

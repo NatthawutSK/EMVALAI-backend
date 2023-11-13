@@ -18,9 +18,8 @@ public class LeaveInfoRestModel {
     private String leave_type;
     private String start_date;
     private String end_date;
-    private boolean leave_status;
+    private String leave_status;
     private String firstName;
     private String lastName;
     private String role;
-
 }

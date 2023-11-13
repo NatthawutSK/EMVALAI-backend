@@ -45,12 +45,4 @@ public class NotificationController {
         }
     }
 
-//    @PutMapping("/updateNoti")
-//    public ResponseEntity<?> updateNotification(@RequestBody NotificationEntity notificationEntity) {
-//        NotificationEntity noti = notificationService.updateNotification(notificationEntity);
-//        if (noti == null) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Notification not found");
-//        }
-//        return ResponseEntity.ok(noti);
-//    }
 }

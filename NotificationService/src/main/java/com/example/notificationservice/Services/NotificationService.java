@@ -36,11 +36,6 @@ public class NotificationService {
         return notificationRepository.save(notificationEntity);
     }
 
-//    public boolean deleteNotification(NotificationEntity notificationEntity) {
-//        try { notificationRepository.delete(notificationEntity); return true; }
-//        catch (Exception e){ return false;}
-//    }
-
     public NotificationEntity updateNotification(NotificationEntity notificationEntity) {
             return notificationRepository.save(notificationEntity);
         }

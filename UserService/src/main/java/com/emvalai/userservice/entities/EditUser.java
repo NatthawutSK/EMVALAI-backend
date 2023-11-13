@@ -10,9 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class EditUser {
+    private String _id;
     private String fName;
     private String lName;
     private String phone;
     private String email;
-    private String String;
+    private String dob;
 }

@@ -41,14 +41,6 @@ public class NotificationService {
 //        catch (Exception e){ return false;}
 //    }
 
-//    public NotificationEntity updateNotification(NotificationEntity notificationEntity) {
-//        NotificationEntity old_noti = notificationRepository.findByTitle(notificationEntity.getTitle());
-//        if (old_noti == null) {
-//            return null;
-//        }
-//        NotificationEntity updatedNoti = notificationRepository.save(notificationEntity);
-//        return updatedNoti;
-//    }
     public NotificationEntity updateNotification(NotificationEntity notificationEntity) {
             return notificationRepository.save(notificationEntity);
         }

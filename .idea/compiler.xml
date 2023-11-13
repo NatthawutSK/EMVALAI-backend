@@ -12,6 +12,7 @@
         <module name="UserService" />
         <module name="TaskService" />
         <module name="AuthService" />
+        <module name="LeaveService" />
         <module name="EMCore" />
         <module name="ApiGateway" />
         <module name="CalendarService" />
@@ -33,6 +34,7 @@
       <module name="Core (2) (com.sop)" options="-parameters" />
       <module name="DiscoveryServer" options="-parameters" />
       <module name="EMCore" options="-parameters" />
+      <module name="LeaveService" options="-parameters" />
       <module name="MeetingService" options="-parameters" />
       <module name="TaskService" options="-parameters" />
       <module name="UserService" options="-parameters" />

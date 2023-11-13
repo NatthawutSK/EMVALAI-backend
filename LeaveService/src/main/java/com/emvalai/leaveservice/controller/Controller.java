@@ -3,14 +3,11 @@ package com.emvalai.leaveservice.controller;
 import com.emvalai.leaveservice.model.LeaveInfoModel;
 import com.emvalai.leaveservice.model.LeaveInfoRestModel;
 import com.emvalai.leaveservice.model.UserEntity;
-import com.emvalai.leaveservice.repository.LeaveInfoRepository;
 import com.emvalai.leaveservice.service.LeaveInfoService;
 import com.emvalai.leaveservice.service.UserService;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,16 +22,15 @@ public class Controller{
     private UserService userService;
     @Autowired
     private RabbitTemplate rabbitTemplate;
+//
+//    @Autowired
+//    LeaveInfoRepository leaveInfoRepository;
 
-    @Autowired
-    LeaveInfoRepository leaveInfoRepository;
-
-    @GetMapping("/getLeaveAll")
-    public List<LeaveInfoRestModel> getLeaveAll(){
+    @GetMapping("/leaves")
+    public List<LeaveInfoRestModel> getLeaveAllWithUserInfo(){
         List<LeaveInfoRestModel> leaveInfoRestModels = new ArrayList<>();
         List<UserEntity> userEntities = userService.getAllUser();
         List<LeaveInfoModel> leaveInfoModels = leaveInfoService.getAll();
-        System.out.println("System1");
         System.out.println(userEntities);
         System.out.println(leaveInfoModels);
         for (LeaveInfoModel leaveModel: leaveInfoModels){
@@ -62,8 +58,20 @@ public class Controller{
         return leaveInfoRestModels;
     }
 
-    @GetMapping("/all")
-    public List<LeaveInfoModel> all(){
-        return leaveInfoRepository.findAll();
+    @GetMapping("/getAll")
+    public List<LeaveInfoModel> getLeaves(){
+        return leaveInfoService.getAll();
     }
+
+    @PostMapping("/create")
+    public boolean create(@RequestBody LeaveInfoModel model){
+        model.setLeave_status(false);
+        return leaveInfoService.createLeaveInfo(model);
+    }
+
+    @PutMapping("/approve/{leave_id}/{status}")
+    public boolean setApprove(@PathVariable("leave_id") int leave_id, @PathVariable("status") boolean status){
+        return leaveInfoService.setApproveInfo(leave_id, status);
+    }
+
 }

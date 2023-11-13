@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/CalendarService/pom.xml" />
         <option value="$PROJECT_DIR$/core/pom.xml" />
         <option value="$PROJECT_DIR$/EMCore/pom.xml" />
+        <option value="$PROJECT_DIR$/LeaveService/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

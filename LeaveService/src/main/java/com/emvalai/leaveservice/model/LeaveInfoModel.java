@@ -1,15 +1,19 @@
 package com.emvalai.leaveservice.model;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.annotation.Collation;
 
 @Data
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Collation("leave")
 public class LeaveInfoModel {
     @Id
-    private int leave_id;
+    private String leave_id;
     private String emp_id;
     private String leave_type;
     private String start_date;
@@ -18,5 +22,4 @@ public class LeaveInfoModel {
     private boolean leave_status;
     private String evidence_img;
     private String note;
-
 }

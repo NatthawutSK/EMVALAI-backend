@@ -26,7 +26,6 @@ public class UserService {
             userRepository.save(user);
             return true;
         }
-
     }
 
     public UserEntity findByEmail(String email){

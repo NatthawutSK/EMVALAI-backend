@@ -1,10 +1,7 @@
 package com.emvalai.userservice.controller;
 
 import com.emvalai.emcore.event.UserOnlyId;
-import com.emvalai.userservice.entities.EditImageEntity;
-import com.emvalai.userservice.entities.ResponseRegister;
-import com.emvalai.userservice.entities.UserEntity;
-import com.emvalai.userservice.entities.UserRestModel;
+import com.emvalai.userservice.entities.*;
 import com.emvalai.userservice.services.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,12 +54,8 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public ResponseEntity<?> UpdateUser(@RequestBody UserEntity user){
-        UserEntity userEntity = userService.UpdateUser(user);
-        if (userEntity == null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
-        }
-        return ResponseEntity.ok(userEntity);
+    public ResponseEntity<?> UpdateUser(@RequestBody EditUser user){
+        return ResponseEntity.ok(userService.UpdateUser(user));
     }
 
     @GetMapping("/getUserbyId/{userId}")

@@ -1,6 +1,7 @@
 package com.emvalai.userservice.services;
 
 import com.emvalai.userservice.entities.EditImageEntity;
+import com.emvalai.userservice.entities.EditUser;
 import com.emvalai.userservice.entities.UserEntity;
 import com.emvalai.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +34,29 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public UserEntity UpdateUser(UserEntity user){
-        UserEntity found = userRepository.findByUserId(user.get_id());
-        if (found == null){
-            return null;
+    public Boolean UpdateUser(EditUser editUser){
+        UserEntity user1 = userRepository.findByUserId(editUser.get_id());
+        if (user1 == null){
+            return false;
+        } else {
+            UserEntity userEntity = UserEntity.builder()
+                    ._id(user1.get_id())
+                    .fName(editUser.getFName())
+                    .lName(editUser.getLName())
+                    .dob(editUser.getDob())
+                    .phone(editUser.getPhone())
+                    .gender(user1.getGender())
+                    .email(editUser.getEmail())
+                    .hireDate(user1.getHireDate())
+                    .password(user1.getPassword())
+                    .position(user1.getPosition())
+                    .image(user1.getImage())
+                    .role(user1.getRole())
+                    .build();
+            userRepository.save(userEntity);
+            return true;
         }
-        UserEntity updatedUser = userRepository.save(user);
-        return updatedUser;
+
     }
 
 
@@ -72,6 +89,7 @@ public class UserService {
                     .image(editImageEntity.getImage())
                     .role(user.getRole())
                     .build();
+            userRepository.save(userEntity);
             return true;
         }
 

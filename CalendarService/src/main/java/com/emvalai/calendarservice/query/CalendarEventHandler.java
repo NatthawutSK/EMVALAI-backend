@@ -5,7 +5,9 @@ import com.emvalai.calendarservice.core.data.CalendarRepository;
 import com.emvalai.calendarservice.core.data.User;
 import com.emvalai.calendarservice.core.event.MeetingCreatedEvent;
 import com.emvalai.emcore.event.MeetingCreateEvent;
+
 import com.emvalai.emcore.event.UserOnlyId;
+
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.ParameterizedTypeReference;
@@ -59,5 +61,6 @@ public class CalendarEventHandler {
         calendarRepository.saveAll(calendarEntities);
 
 //        System.out.println(calendarEntities);
+
     }
 }
